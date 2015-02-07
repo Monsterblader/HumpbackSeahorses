@@ -72,12 +72,12 @@ var allowDrop = function(ev) {
   ev.preventDefault();
 }
 
-var drag = function(ev) {
-  ev.dataTransfer.setData("object", ev.target["data-user_id"]);
+var drag = function(ev) {  
+  ev.dataTransfer.setData("text", ev.currentTarget.dataset.user_id);
 };
 
 var drop = function(ev) {
   ev.preventDefault();
-  var data = ev.dataTransfer.getData("object");
-  console.log(data);
+  var data = ev.dataTransfer.getData("text");
+  styleTool($('[data-user_id="' + data + '"]'), "toggleIgnore");
 }
